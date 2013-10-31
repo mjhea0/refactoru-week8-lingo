@@ -2,7 +2,7 @@
 html
    head
       title= title
-      link(rel='stylesheet', href='/css/bootstrap.min.css')
+      link(rel='stylesheet', href='/css/bootstrap.css')
       link(rel='stylesheet', href='/css/style.css')
       link(rel='shortcut icon', href='/img/favicon.ico', type='image/x-icon')
       link(rel='icon', href='/img/favicon.ico', type='image/x-icon')
@@ -55,15 +55,14 @@ html
                h1 Welcome to #{config.name}!
             if user
                div.row-fluid
-                  h4 You should think about putting something here.
-                  h5 Current User: #{user.username}
+                  a(href='/translate') Translate a Word
                div.button
                   a(href='/logout') Logout
 
 
             else
                div.row-fluid
-                  h4 This is a basic Node boilerplate complete with user authentication.
+                  h4 Have fun. Learn a new language. Pay it forward.
                   br
                   a.btn.btn-inverse.btn-large(href='/login') Login
 
@@ -71,8 +70,9 @@ html
       block modals
 
 
-      script(src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js')
       script(src='http://code.jquery.com/jquery-1.10.2.min.js')
+      script(src='/js/bootstrap.js')
+      script(src='/js/main.js')
       block pageScripts
          
 

@@ -34,4 +34,6 @@ module.exports = function(app){
   app.post('/register', home.postRegister);
   app.get('/checkExists', home.checkExists);
   app.get('/profile', restrict, home.profile);
+  app.get('/translate', restrict, home.translate);
+  app.post('/translate', restrict, home.postTranslate);
 };

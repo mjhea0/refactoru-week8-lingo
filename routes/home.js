@@ -1,6 +1,13 @@
 // routes that handle the basic pages and user accounts
 
 var User = require('../models/user');
+var newWord = {};
+var BeGlobal = require('node-beglobal');
+
+//initialize the BeGlobal API
+var beglobal = new BeGlobal.BeGlobalAPI({
+  api_token: 'sHznA1WNhbI28hl%2BbKFjpQ%3D%3D'
+});
 
 // object
 module.exports = {
@@ -10,6 +17,26 @@ module.exports = {
     res.render('index.jade', {
       title: app.locals.config.name,
       user: req.user
+    });
+  },
+
+  // app.get('/translate'...)
+  translate: function(req, res) {
+    res.render('translate.jade', {
+      title: 'Translate',
+      user: req.user
+    });
+  }, 
+
+  // app.post('/translate'...)
+  postTranslate: function(req, res) {
+    newWord = req.body;
+    return beglobal.translations.translate(newWord, function(err, results) {
+      if (!err) {
+        return res.send(results);
+      } else {
+        return console.log(err); 
+      }
     });
   },
 
