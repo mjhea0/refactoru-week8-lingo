@@ -1,28 +1,40 @@
 extends index
 
 block afterNav
-   h1 Translate a Word
+   h1 Translate a Word or Phrase
    hr
-   div.row
-      div.span3
-         h4 From:
-         select
-            option(data-language='English') English
-            option(data-lang='Spanish') Spanish
-      div.span3        
-         h4 To:
-         select
-            option#languageFrom(data-language='english') English
-            option#languageTo(data-language='spanish') Spanish
    br
    div.row
-      div.span6
+      div.span4.offset1
+         h4 Instructions:
+         p.ul
+            li Pick a language to translate from
+            li Pick a language to translate to
+            li Enter a word. Press submit.
+
+      div.span3
+         h4 From:
+         select#languageFrom
+            option
+            option(data-language='eng') English
+            option(data-language='spa') Spanish
+            option(data-language='fra') French
+      div.span3        
+         h4 To:
+         select#languageTo
+            option
+            option(data-language='eng') English
+            option(data-language='spa') Spanish
+            option(data-language='fra') French
+      div.span3
          h4 Enter a word:
          form     
             input#translateWord(name="word", type="text", placeholder="Word...")
             br
             button#translate-btn.btn.btn-inverse Submit
-   div.row.span12#translated-word
+   div.row
+      div.span8.offset2
+         h2#translated-word
 
 block modals
    //- this is where you can add hidden divs and other elements that you'll want to display

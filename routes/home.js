@@ -5,7 +5,7 @@ var newWord = {};
 var BeGlobal = require('node-beglobal');
 
 //initialize the BeGlobal API
-var beglobal = new BeGlobal.BeGlobalAPI({
+var beglobal = new BeGlobal.BeglobalAPI({
   api_token: 'sHznA1WNhbI28hl%2BbKFjpQ%3D%3D'
 });
 
@@ -30,10 +30,11 @@ module.exports = {
 
   // app.post('/translate'...)
   postTranslate: function(req, res) {
-    newWord = req.body;
-    return beglobal.translations.translate(newWord, function(err, results) {
+    console.log(req.body)
+    beglobal.translations.translate(req.body, function(err, results) {
       if (!err) {
-        return res.send(results);
+        res.send(results);
+        console.log(results)
       } else {
         return console.log(err); 
       }

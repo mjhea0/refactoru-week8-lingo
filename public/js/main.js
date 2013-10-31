@@ -1,15 +1,26 @@
 $(function() {
+  
+  $('#languageTo').prop("disabled", true);
+  $('#languageFrom').change(function() {
+    $('#languageTo').prop("disabled", false);
+  });
+
   // translate a word
   $('#translate-btn').click(function(e) {
     e.preventDefault();
+    var wordFrom = $('#languageFrom option:selected').attr('data-language');
+    var wordTo = $('#languageTo option:selected').attr('data-language');
+    var word = $('#translateWord').val();
     var wordObject = {
-      text: $('#translateWord').val(),
-      from: $('#languageFrom').attr('data-language'),
-      to: $('#languageTo').attr('data-language')
+      text: word,
+      from: wordFrom,
+      to: wordTo,
     };
-    console.log(wordObject)
     $.post('/translate', wordObject, function(data) {
-      $('#translated-word').append('<h3>'+data.translation+'</h3>');
+      $('#translated-word').html('<h3><em>'+capitalize(word)+
+        '</em> translates to <em>'+data.translation+'</em>.<br><center>Cheers!</center></h3>');
     });
   });
 });
+
+function capitalize(string){return string.charAt(0).toUpperCase() + string.slice(1)}
