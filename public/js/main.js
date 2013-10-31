@@ -18,7 +18,7 @@ $(function() {
     };
     $.post('/translate', wordObject, function(data) {
       $('#translated-word').html('<h3><em>'+capitalize(word)+
-        '</em> translates to <em>'+data.translation+'</em>.<br><center>Cheers!</center></h3>');
+        '</em> translates to <em>'+data.translation+'</em>.</h3>');
     });
   });
 });

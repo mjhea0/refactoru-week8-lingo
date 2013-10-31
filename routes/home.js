@@ -30,13 +30,11 @@ module.exports = {
 
   // app.post('/translate'...)
   postTranslate: function(req, res) {
-    console.log(req.body)
     beglobal.translations.translate(req.body, function(err, results) {
       if (!err) {
         res.send(results);
-        console.log(results)
       } else {
-        return console.log(err); 
+        res.send(err); 
       }
     });
   },
