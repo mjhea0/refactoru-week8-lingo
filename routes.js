@@ -36,4 +36,5 @@ module.exports = function(app){
   app.get('/profile', restrict, home.profile);
   app.get('/translate', restrict, home.translate);
   app.post('/translate', restrict, home.postTranslate);
+  app.get('/quiz', restrict,home.quiz)
 };

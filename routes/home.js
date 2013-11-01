@@ -39,6 +39,14 @@ module.exports = {
     });
   },
 
+  // app.get('/quiz'...)
+  quiz: function(req, res) {
+    res.render('quiz.jade', {
+      title: 'Quiz',
+      user: req.user
+    });
+  },
+
   // app.get('/login'...)
   login: function(req, res) {
     res.render('login.jade', {
